@@ -620,29 +620,30 @@ section:nth-child(even) {
     background: var(--black-light);
 }
 
-/* --- PROBLEMS --- */
-.problems-grid {
+/* --- DIFERENCIALES --- */
+.solution-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+    gap: 30px;
+    align-items: stretch;
 }
 
-.problem-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.problem-item {
+.solution-item {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    padding: 20px;
-    background: rgba(230, 57, 70, 0.04);
-    border: 1px solid rgba(230, 57, 70, 0.1);
-    border-radius: var(--radius-md);
+    gap: 20px;
+    padding: 30px;
+    background: var(--black-card);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-lg);
     transition: var(--transition);
+    height: 100%;
+}
+
+.solution-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-glow-gold);
 }
 
 .problem-item:hover {
@@ -1468,7 +1469,7 @@ section:nth-child(even) {
         max-width: 400px;
     }
 
-    .problems-grid {
+    .solution-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }

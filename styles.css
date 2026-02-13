@@ -1056,17 +1056,19 @@ section:nth-child(even) {
 .plan-card.featured::before {
     content: 'MÁS POPULAR';
     position: absolute;
-    top: 22px;
-    right: -26px;
+    top: 20px;
+    right: -32px;
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
     color: var(--black);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 700;
-    padding: 4px 40px;
+    padding: 4px 30px;
     transform: rotate(45deg);
     letter-spacing: 1px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 10;
+    width: 150px;
+    text-align: center;
 }
 
 .plan-card:hover {
@@ -1495,9 +1497,7 @@ section:nth-child(even) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+
 
     .process-steps {
         grid-template-columns: repeat(2, 1fr);
@@ -1543,9 +1543,7 @@ section:nth-child(even) {
         grid-template-columns: 1fr;
     }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
+
 
     .process-steps {
         grid-template-columns: 1fr;

@@ -795,12 +795,15 @@ section:nth-child(even) {
 
 /* --- PORTFOLIO --- */
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: center;
     gap: 24px;
+    flex-wrap: wrap;
 }
 
 .portfolio-card {
+    width: 100%;
+    max-width: 450px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     position: relative;
@@ -1053,8 +1056,8 @@ section:nth-child(even) {
 .plan-card.featured::before {
     content: 'MÁS POPULAR';
     position: absolute;
-    top: 16px;
-    right: -32px;
+    top: 22px;
+    right: -26px;
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
     color: var(--black);
     font-size: 0.65rem;
@@ -1062,6 +1065,8 @@ section:nth-child(even) {
     padding: 4px 40px;
     transform: rotate(45deg);
     letter-spacing: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
 .plan-card:hover {

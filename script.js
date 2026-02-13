@@ -133,16 +133,48 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Contact Form ---
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const wrapper = contactForm.closest('.contact-form-wrapper');
-      wrapper.innerHTML = `
-        <div class="form-success">
-          <div class="success-icon">✓</div>
-          <h3>¡Mensaje enviado!</h3>
-          <p>Recibimos tu solicitud. Te responderemos en menos de 2 horas con una propuesta personalizada.</p>
-        </div>
-      `;
+
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerText;
+
+      // Estado de carga visual
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Enviando...";
+
+      const formData = new FormData(contactForm);
+
+      try {
+        // REEMPLAZA LA URL DE ABAJO CON LA QUE TE DE FORMSPREE
+        const response = await fetch("https://formspree.io/f/TU_CODIGO_FORMSPREE_AQUI", {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          // Éxito: Mostrar mensaje de confirmación
+          const wrapper = contactForm.closest('.contact-form-wrapper');
+          wrapper.innerHTML = `
+            <div class="form-success">
+              <div class="success-icon">✓</div>
+              <h3>¡Mensaje enviado!</h3>
+              <p>Recibimos tu solicitud. Te responderemos en menos de 2 horas con una propuesta personalizada.</p>
+            </div>
+          `;
+        } else {
+          // Error del servidor
+          throw new Error('Error en el envío');
+        }
+      } catch (error) {
+        // Error de red o del servidor
+        alert("Hubo un problema al enviar el formulario. Por favor, escribinos directamente por WhatsApp.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+      }
     });
   }
 
